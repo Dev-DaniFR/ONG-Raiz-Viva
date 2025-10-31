@@ -1,0 +1,700 @@
+/* Definição de Variáveis CSS */
+:root {
+    /* =================================================================
+       1. CORES (Paleta de Cores)
+       - Primárias: Ações principais e identidade
+       - Secundárias: Destaque e interatividade
+       - Neutras: Fundo, texto e bordas
+       ================================================================= */
+    /* Cores Primárias (Verdes da Marca) */
+    --cor-primaria-escura: #3d7a35;
+    /* Verde Escuro da Terra/Mata */
+    --cor-primaria: #4a8f3f;
+    /* Verde Natural Principal */
+    --cor-primaria-clara: #8bbd7e;
+    /* Verde Pastel/Borda */
+
+    /* Cores Secundárias (Destaque e Ação) */
+    --cor-secundaria: #f2c75c;
+    /* Amarelo/Ouro (para alertas ou ênfase) */
+    --cor-secundaria-hover: #e0b44a;
+    /* Amarelo mais escuro para hover */
+
+    /* Cores Neutras (Fundo e Texto) */
+    --cor-neutra-fundo-escuro: rgba(60, 40, 20, 0.80);
+    /* Marrom Escuro (Fundo Main) */
+    --cor-neutra-fundo-claro: #f5f0e8;
+    /* Bege/Off-white (Fundo Claro) */
+    --cor-neutra-texto: #e9fbe2;
+    /* Verde Claríssimo (Texto Principal) */
+    --cor-neutra-texto-escuro: #3a2a16;
+    /* Marrom Escuro (Texto em fundo claro) */
+    --cor-neutra-fundo-header: rgba(60, 40, 20, 0.90);
+    /* Marrom Escuro para Header - Opacidade 90% */
+    --cor-neutra-fundo-footer: rgba(61, 122, 53, 0.85);
+    /* Fundo do Rodapé (Verde Escuro com Opacidade) */
+    --cor-neutra-texto-claro: #fff;
+    /* Cores de Alerta / Feedback */
+    --cor-alerta-fundo-sucesso: #e6ffe6;
+    --cor-alerta-borda-sucesso: #4CAF50;
+    --cor-alerta: #ff4d4d;
+
+    /* TIPOGRAFIA */
+    --fonte-size-xs: 0.9rem;
+    --fonte-size-sm: 1.2rem;
+    --fonte-size-md: 1.6rem;
+    --fonte-size-lg: 2.0rem;
+    --fonte-size-xl: 2.5rem;
+
+    /* =================================================================
+       2. ESPAÇAMENTO MODULAR (8px, 16px, 24px, 32px, 48px, 64px)
+       ================================================================= */
+    --espacamento-xs: 8px;
+    /* Extra Small */
+    --espacamento-sm: 16px;
+    /* Small (2 * 8px) */
+    --espacamento-md: 24px;
+    /* Medium (3 * 8px) */
+    --espacamento-lg: 32px;
+    /* Large (4 * 8px) */
+    --espacamento-xl: 48px;
+    /* Extra Large (6 * 8px) */
+    --espacamento-xxl: 64px;
+    /* Huge (8 * 8px) */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* === CORPO DA PÁGINA === */
+body {
+    background: url('../imagens/fundoterra.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--cor-neutra-texto);
+    /* verde claro suave */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== CABEÇALHO ===== */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacamento-xs) var(--espacamento-xl);
+    /* 8px 48px */
+    background-color: var(--cor-neutra-fundo-header);
+    border-bottom: 3px solid var(--cor-neutra-fundo-escuro);
+    height: 100px;
+}
+
+header img {
+    height: 70px;
+    width: auto;
+    border-radius: 50%;
+    margin-right: var(--espacamento-sm);
+    /* 16px  */
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    color: var(--cor-neutra-texto);
+    font-size: var(--fonte-size-xl);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    gap: var(--espacamento-xs);
+    /* 8px */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* menu de navegação à direita */
+nav {
+    margin-left: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--espacamento-lg);
+    /* 32px */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--cor-neutra-fundo-claro);
+    /* Bege/Off-white */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--cor-primaria-clara);
+}
+
+.menu-hamburguer {
+    all: unset;
+    position: fixed;
+    top: var(--espacamento-md);
+    right: var(--espacamento-md);
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1000;
+    outline: none;
+}
+
+.menu-hamburguer .linha {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Animação do X */
+.menu-hamburguer.aberto .linha:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-hamburguer.aberto .linha:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-hamburguer.aberto .linha:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === CONTEÚDO PRINCIPAL === */
+main {
+    background-color: var(--cor-neutra-fundo-escuro);
+    color: var(--cor-neutra-texto);
+    padding: var(--espacamento-lg);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    max-width: 1000px;
+    margin: var(--espacamento-xl) auto;
+}
+
+main img {
+    display: block;
+    margin: 0 auto var(--espacamento-md);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+main p,
+main address,
+main ul,
+main ol {
+    margin-bottom: var(--espacamento-sm);
+    margin-top: 0;
+}
+
+section p:last-child,
+section address:last-child {
+    margin-bottom: 0;
+}
+
+section {
+    margin-bottom: var(--espacamento-xl);
+}
+
+h2 {
+    color: var(--cor-primaria-clara);
+    border-left: 5px solid var(--cor-primaria-clara);
+    padding-left: var(--espacamento-sm);
+    /* 16px */
+    margin-bottom: var(--espacamento-xs);
+}
+
+a {
+    color: var(--cor-primaria-clara);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--cor-neutra-texto);
+}
+
+/* === LISTAS === */
+ul {
+    margin-top: var(--espacamento-xs);
+    margin-left: var(--espacamento-md);
+}
+
+li {
+    margin-bottom: var(--espacamento-xs);
+}
+
+/* ===========================
+   BOTÕES DOS PROJETOS
+=========================== */
+.botao-link {
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    color: var(--cor-neutra-texto-claro);
+    text-decoration: none;
+    padding: var(--espacamento-sm) var(--espacamento-md);
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Efeito ao passar o mouse */
+.botao-link:hover {
+    background-color: var(--cor-primaria-clara);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(80, 200, 120, 0.4);
+}
+
+/* Efeito ao clicar */
+.botao-link:active {
+    transform: scale(0.95);
+    background-color: var(--cor-primaria-escura);
+    box-shadow: 0 2px 3px rgba(50, 100, 50, 0.3);
+}
+
+/* Efeito visual quando clicado */
+.botao-link.clicado {
+    background-color: var(--cor-primaria-escura);
+    box-shadow: 0 0 15px 3px rgba(120, 255, 120, 0.6);
+    transform: scale(1.1);
+}
+
+/* === RODAPÉ === */
+footer {
+    letter-spacing: 0.5px;
+    background-color: var(--cor-neutra-fundo-footer);
+    color: var(--cor-neutra-texto-claro);
+    text-align: center;
+    padding: var(--espacamento-md) 10%;
+    font-size: var(--fonte-size-xs);
+    border-top: 4px solid var(--cor-primaria-escura);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.badge {
+    background: var(--cor-primaria-escura);
+    color: var(--cor-neutra-texto);
+    font-weight: bold;
+    padding: 4px 100px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    display: inline-block;
+    text-shadow: none;
+    margin-left: var(--espacamento-xl);
+    margin-right: var(--espacamento-xl);
+    vertical-align: middle;
+}
+
+/* =================================================================
+   SISTEMA DE CARDS DE PROJETOS  
+   ================================================================= */
+
+/* Container dos Cards */
+.container-cards {
+    text-align: center;
+    gap: var(--espacamento-lg);
+    margin: var(--espacamento-xl) auto;
+    max-width: 1200px;
+    padding: 0;
+    background: none;
+}
+
+/* O CARD INDIVIDUAL (.projeto) */
+.projeto {
+    margin: 0 auto var(--espacamento-lg);
+    /* Cor de fundo do card: Marrom Escuro */
+    background-color: var(--cor-neutra-fundo-escuro);
+    color: var(--cor-neutra-texto);
+    padding: var(--espacamento-md);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Efeito Hover no Card */
+.projeto:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 12px 20px rgba(74, 143, 63, 0.4);
+}
+
+/* Título dentro do Card */
+.projeto h2 {
+    text-align: center;
+    color: var(--cor-primaria-clara);
+    border-left: none;
+    padding-left: 0;
+    margin-bottom: var(--espacamento-md);
+    font-size: var(--fonte-size-lg);
+}
+
+/* Imagem dentro do Card */
+.projeto img {
+    display: block;
+    margin: 0 auto var(--espacamento-sm);
+    border-radius: 8px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease;
+}
+
+/* Efeito Hover na Imagem */
+.projeto img:hover {
+    transform: scale(1.03);
+}
+
+/* Parágrafo dentro do Card */
+.projeto p {
+    color: var(--cor-neutra-texto);
+    margin: var(--espacamento-md) auto;
+    font-size: var(--fonte-size-sm);
+    line-height: 1.6;
+}
+
+/* Botão dentro do card */
+.projeto button {
+    margin-top: var(--espacamento-lg);
+}
+
+.projeto:last-child {
+    margin-bottom: var(--espacamento-xs);
+}
+
+/* === ESTILOS DA GALERIA DE IMAGENS ===*/
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--espacamento-lg);
+    /* Espaçamento entre as imagens */
+    margin-bottom: var(--espacamento-xl);
+    /* Espaço abaixo da galeria */
+}
+
+/* 2. Estilo de Cada Item (Figure) */
+.item-galeria {
+    background-color: var(--cor-neutra-fundo-escuro);
+    /* Fundo marrom escuro como os cards */
+    padding: var(--espacamento-xs);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito Hover */
+.item-galeria:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* 3. Estilo da Imagem */
+.item-galeria img {
+    width: 100%;
+    height: 200px;
+    /* Altura fixa para alinhar os itens */
+    object-fit: cover;
+    /* Garante que a imagem preencha o espaço sem distorcer */
+    border-radius: 8px;
+    /* Arredondamento suave para a imagem */
+    display: block;
+    margin: 0 0 var(--espacamento-xs);
+    /* Espaço entre imagem e legenda */
+    box-shadow: none;
+}
+
+/* 4. Estilo da Legenda */
+.item-galeria figcaption {
+    color: var(--cor-neutra-texto);
+    font-size: var(--fonte-size-xs);
+    text-align: center;
+    padding: var(--espacamento-xs) 0;
+}
+
+.secoes-finais {
+    display: flex;
+    /* Ativa o modo Flexbox */
+    gap: var(--espacamento-lg);
+    /* Adiciona espaço entre as duas colunas */
+    margin-top: var(--espacamento-xl);
+    /* Espaço acima das seções */
+    margin-bottom: var(--espacamento-xl);
+    /* Espaço abaixo das seções */
+    align-items: stretch;
+}
+
+.secoes-finais .projeto {
+    flex: 1;
+    min-width: 45%;
+    height: 100%;
+}
+
+/* Regra para telas pequenas (Responsividade) */
+@media (max-width: 768px) {
+    .secoes-finais {
+        flex-direction: column;
+        /* Em telas menores, volta a ser uma coluna */
+        gap: var(--espacamento-md);
+        /* Reduz o espaço quando estão em coluna */
+    }
+
+    .secoes-finais .projeto {
+        min-width: 100%;
+        /* Ocupa a largura total em telas pequenas */
+    }
+}
+
+.submenu-card-container {
+    position: relative;
+    text-align: center;
+    margin-top: var(--espacamento-xs);
+    display: block;
+}
+
+.menu-opener {
+    display: inline-block;
+    background: none;
+    border: none;
+
+    /* Estilos de texto */
+    color: var(--cor-primaria-clara);
+    font-weight: 600;
+    font-size: var(--fonte-size-sm);
+    padding: var(--espacamento-xs) 0;
+    cursor: pointer;
+    /* Cursor de mãozinha para indicar clique */
+    transition: color 0.3s ease;
+}
+
+.menu-opener:hover {
+    color: var(--cor-secundaria);
+}
+
+/* 3. Estilo do Submenu */
+.card-submenu {
+    display: none;
+    /*ESCONDE o menu por padrão */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 250px;
+
+    /* Aparência */
+    background-color: var(--cor-neutra-fundo-claro);
+    border: 1px solid var(--cor-primaria);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 500;
+}
+
+/* MOSTRAR no clique */
+.card-submenu.aberto {
+    display: block !important;
+}
+
+.submenu-option {
+    display: block;
+    color: var(--cor-neutra-texto-escuro);
+    padding: var(--espacamento-sm);
+    cursor: default;
+    /* Retira o cursor de 'mãozinha' nos itens não clicáveis */
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-shadow: none;
+}
+
+/* Efeito Hover visual */
+.card-submenu li:hover .submenu-option {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-neutra-texto-escuro);
+}
+
+/* === LAYOUT FLEX — 2 COLUNAS NO DESKTOP, 1 NO MOBILE === */
+.linha-projetos {
+    display: flex;
+    justify-content: center;
+    gap: var(--espacamento-lg);
+    margin-bottom: var(--espacamento-xl);
+    flex-wrap: wrap;
+}
+
+.linha-projetos .projeto {
+    flex: 1 1 calc(50% - var(--espacamento-lg));
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.aviso-boas-vindas {
+    background-color: var(--cor-alerta-fundo-sucesso);
+    border: 1px solid var(--cor-alerta-borda-sucesso);
+    padding: var(--espacamento-sm);
+    margin: var(--espacamento-md) 0;
+    border-radius: var(--espacamento-xs);
+    text-align: center;
+    text-shadow: none;
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 1: Desktop Pequeno/Tablet Paisagem (max-width: 1200px)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 1200px) {
+
+    /* Ajusta o padding principal para telas ligeiramente menores */
+    main {
+        max-width: 90%;
+    }
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 2: Tablet Paisagem (max-width: 992px)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 992px) {
+    :root {
+        --fonte-size-xl: 2.2rem;
+        --fonte-size-lg: 1.8rem;
+    }
+
+    header {
+        padding: var(--espacamento-sm) var(--espacamento-md);
+    }
+
+    header img {
+        left: var(--espacamento-md);
+        height: 60px;
+    }
+
+    nav {
+        right: var(--espacamento-md);
+    }
+
+    nav ul {
+        gap: var(--espacamento-sm);
+    }
+
+    main {
+        max-width: 95%;
+    }
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 3
+   ------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+
+    /* Esconde o Logo para economizar espaço no Header */
+    header img {
+        display: none;
+    }
+
+    /* MOSTRAR O HAMBÚRGUER */
+    .menu-hamburguer {
+        display: flex;
+    }
+
+    /* AJUSTE DO MENU */
+    nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: var(--cor-neutra-fundo-escuro);
+        padding-top: var(--espacamento-xl);
+        z-index: 999;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    nav.aberto {
+        transform: translateX(0);
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: var(--espacamento-lg);
+    }
+
+    .linha-projetos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .linha-projetos .projeto {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 4: Mobile Pequeno (max-width: 576px)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 576px) {
+
+    /* Reduz o tamanho do título principal */
+    header h1 {
+        font-size: var(--fonte-size-lg);
+    }
+
+    main {
+        padding: var(--espacamento-sm);
+        margin: var(--espacamento-md) auto;
+    }
+
+    #endereco {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 5: Mobile Extra Pequeno (max-width: 400px)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 400px) {
+
+    /* Diminui ainda mais o título e espaçamentos */
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    main {
+        padding: var(--espacamento-xs);
+    }
+
+    button,
+    a.btn {
+        font-size: 0.85rem;
+        padding: var(--espacamento-xs) var(--espacamento-sm);
+    }
+}

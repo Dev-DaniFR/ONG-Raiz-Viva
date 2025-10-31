@@ -1,0 +1,533 @@
+/* =================================================================
+   1. DEFINIÇÃO DO DESIGN SYSTEM (VARIÁVEIS CSS)
+   ================================================================= */
+:root {
+    /* CORES (Paleta de 10 cores) */
+    --cor-primaria-escura: #3d7a35;
+    /* Verde Escuro da Terra/Mata */
+    --cor-primaria: #4a8f3f;
+    /* Verde Natural Principal */
+    --cor-primaria-clara: #8bbd7e;
+    /* Verde Pastel/Borda */
+    --cor-secundaria: #f2c75c;
+    /* Amarelo/Ouro (para alertas ou ênfase) */
+    --cor-secundaria-hover: #e0b44a;
+    /* Amarelo mais escuro para hover */
+    --cor-neutra-fundo-escuro: rgba(60, 40, 20, 0.80);
+    /* Marrom Escuro (Fundo Main) */
+    --cor-neutra-fundo-transparente: rgba(46, 33, 21, 0.6);
+    /* Marrom Escuro Transparente */
+    --cor-neutra-fundo-claro: #f5f0e8;
+    /* Bege/Off-white (Fundo Claro) */
+    --cor-neutra-texto: #e9fbe2;
+    /* Verde Claríssimo (Texto Principal) */
+    --cor-neutra-texto-escuro: #3a2a16;
+    /* Marrom Escuro (Texto em fundo claro) */
+    --cor-alerta: #ff4d4d;
+    /* Cores de Alerta / Feedback */
+    --cor-alerta-fundo-sucesso: #e6ffe6;
+    --cor-alerta-borda-sucesso: #4CAF50;
+    --cor-erro-fundo: #ffe5e5;
+    --cor-erro-borda: #d62828;
+    --cor-neutra-texto-claro: #fff;
+
+    /* TIPOGRAFIA (Hierarquia de 5 tamanhos) */
+    --fonte-size-xs: 0.9rem;
+    /* Rodapé e texto pequeno */
+    --fonte-size-sm: 1.2rem;
+    /* Subtítulos menores, campos de formulário */
+    --fonte-size-md: 1.6rem;
+    /* Frases de destaque, parágrafos grandes */
+    --fonte-size-lg: 2.0rem;
+    /* H2s, Títulos de Seção */
+    --fonte-size-xl: 2.5rem;
+    /* H1 Principal */
+
+    /* ESPAÇAMENTO MODULAR (Base modular: 8px) */
+    --espacamento-xs: 8px;
+    /* 8px */
+    --espacamento-sm: 16px;
+    /* 16px */
+    --espacamento-md: 24px;
+    /* 24px */
+    --espacamento-lg: 32px;
+    /* 32px */
+    --espacamento-xl: 48px;
+    /* 48px */
+    --espacamento-xxl: 64px;
+    /* 64px */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-image: url("../imagens/fundoterra.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: var(--cor-neutra-texto);
+    overflow-x: hidden;
+}
+
+header {
+    position: relative;
+    background-color: var(--cor-neutra-fundo-escuro);
+    color: var(--cor-neutra-texto);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* centraliza o título */
+    padding: var(--espacamento-md) var(--espacamento-md);
+}
+
+/* Logo fixada à esquerda */
+header img {
+    position: absolute;
+    left: var(--espacamento-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    /* centraliza verticalmente o logo */
+    width: auto;
+    height: 70px;
+    border-radius: 50%;
+}
+
+/* Título centralizado */
+header h1 {
+    font-size: var(--fonte-size-xl);
+    color: var(--cor-neutra-texto);
+    text-align: center;
+    margin: 0;
+}
+
+/* Menu no canto direito */
+nav {
+    position: absolute;
+    right: var(--espacamento-lg);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--espacamento-lg);
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--cor-neutra-fundo-claro);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--cor-primaria-clara);
+}
+
+/* Subtítulo */
+header h2 {
+    font-size: var(--fonte-size-sm);
+    font-weight: 400;
+    max-width: 700px;
+    color: var(--cor-primaria-clara);
+    margin-top: 5px;
+}
+
+.menu-hamburguer {
+    all: unset;
+    position: fixed;
+    top: var(--espacamento-md);
+    right: var(--espacamento-md);
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1000;
+    outline: none;
+}
+
+.menu-hamburguer .linha {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor-neutra-texto-claro);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Animação do X */
+.menu-hamburguer.aberto .linha:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-hamburguer.aberto .linha:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-hamburguer.aberto .linha:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === CONTEÚDO PRINCIPAL === */
+main {
+    background-color: var(--cor-neutra-fundo-transparente);
+    color: var(--cor-neutra-texto);
+    padding: var(--espacamento-lg);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    max-width: 1000px;
+    margin: var(--espacamento-xl) auto;
+}
+
+main img {
+    display: block;
+    margin: 0 auto var(--espacamento-md);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+section {
+    margin-bottom: var(--espacamento-xl);
+}
+
+h2 {
+    color: var(--cor-primaria-clara);
+    border-left: 5px solid var(--cor-primaria-clara);
+    padding-left: var(--espacamento-xs);
+    margin-bottom: var(--espacamento-xs);
+}
+
+a {
+    color: var(--cor-primaria-clara);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--cor-neutra-texto);
+}
+
+/* Frase principal */
+main p {
+    margin: var(--espacamento-xl) auto;
+    font-size: var(--fonte-size-md);
+    font-weight: 500;
+    text-align: center;
+    color: var(--cor-neutra-texto);
+    line-height: 1.5;
+}
+
+figure img {
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--espacamento-xl);
+    width: 400px;
+}
+
+form {
+    background-color: var(--cor-neutra-fundo-transparente);
+    padding: var(--espacamento-xl);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 85%;
+    max-width: 900px;
+}
+
+fieldset {
+    border: 1px solid var(--cor-primaria-clara);
+    border-radius: 10px;
+    margin-bottom: var(--espacamento-md);
+    padding: var(--espacamento-md);
+}
+
+legend {
+    font-weight: bold;
+    color: var(--cor-neutra-texto);
+    padding: var(--espacamento-xs) var(--espacamento-xs);
+}
+
+/* Campos de entrada */
+input,
+select {
+    width: 100%;
+    padding: var(--espacamento-xs);
+    border: 1px solid var(--cor-primaria-clara);
+    border-radius: 6px;
+    margin-top: var(--espacamento-xs);
+    background-color: var(--cor-neutra-fundo-claro);
+}
+
+.campo-checkbox {
+    margin-top: var(--espacamento-lg);
+    margin-bottom: var(--espacamento-md);
+    display: flex;
+    /* Alinha o checkbox e o label */
+    align-items: center;
+    /* Centraliza verticalmente o checkbox e o texto */
+    max-width: 600px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.campo-checkbox input[type="checkbox"] {
+    width: 20px;
+    /* Tamanho da caixa */
+    height: 20px;
+    /* Tamanho da caixa */
+    margin-right: var(--espacamento-sm);
+    cursor: pointer;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 4px;
+    background-color: var(--cor-neutra-fundo-claro);
+    margin-top: 0;
+}
+
+.campo-checkbox label {
+    display: inline;
+    font-weight: 400;
+    color: var(--cor-neutra-texto);
+    margin-top: 0;
+    cursor: pointer;
+}
+
+/* ===========================
+   BOTÃO INTERATIVO - RAIZ VIVA (com brilho)
+=========================== */
+button {
+    background-color: var(--cor-neutra-fundo-escuro);
+    color: var(--cor-neutra-texto-claro);
+    border: none;
+    padding: var(--espacamento-sm) var(--espacamento-md);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    width: 100%;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Efeito ao passar o mouse */
+button:hover {
+    background-color: var(--cor-neutra-fundo-escuro);
+    /* marrom um pouco mais quente */
+    transform: scale(1.04);
+    box-shadow: 0 6px 12px rgba(74, 143, 63, 0.4);
+    border: 1px solid var(--cor-primaria-clara);
+}
+
+/* Efeito ao clicar */
+button:active {
+    transform: scale(0.95);
+    background-color: var(--cor-primaria-escura);
+    box-shadow: 0 2px 3px rgba(74, 143, 63, 0.2);
+}
+
+button:focus {
+    outline: 2px solid var(--cor-primaria-clara);
+    outline-offset: 2px;
+}
+
+/* estado desativado */
+button:disabled {
+    opacity: 0.5;
+    /* Deixa o botão mais apagado */
+    cursor: not-allowed;
+    transform: none;
+}
+
+footer {
+    background-color: rgba(61, 122, 53, 0.85);
+    color: var(--cor-neutra-texto);
+    text-align: center;
+    padding: var(--espacamento-sm);
+    margin-top: var(--espacamento-xl);
+}
+
+input:invalid:not(:focus),
+select:invalid:not(:focus) {
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 5px rgba(242, 199, 92, 0.7);
+}
+
+/* Estilo para campos válidos (sucesso) */
+input:valid:not(:focus),
+select:valid:not(:focus) {
+    border-color: var(--cor-primaria);
+    /* Borda verde */
+}
+
+/* =======================
+   TOAST - Feedback de Erro
+   ======================= */
+#toast {
+    position: fixed;
+    bottom: var(--espacamento-lg);
+    right: var(--espacamento-lg);
+    background-color: var(--cor-alerta);
+    color: var(--cor-neutra-texto-claro);
+    padding: var(--espacamento-sm) var(--espacamento-md);
+    border-radius: 6px;
+    font-size: var(--fonte-size-sm);
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 9999;
+}
+
+#toast.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.erro-campo {
+    border: 2px solid var(--cor-erro-borda);
+    background-color: var(--cor-erro-fundo);
+}
+
+.sucesso {
+    text-align: center;
+    margin-top: var(--espacamento-xl);
+}
+
+.sucesso button {
+    margin-top: var(--espacamento-md);
+    padding: var(--espacamento-xs) var(--espacamento-sm);
+    cursor: pointer;
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 1: Desktop Pequeno/Tablet Paisagem (max-width: 1200px)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 1200px) {
+
+    /* Ajusta o padding principal para telas ligeiramente menores */
+    main {
+        max-width: 90%;
+    }
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 2: Tablet Paisagem (max-width: 992px)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 992px) {
+    :root {
+        --fonte-size-xl: 2.2rem;
+        --fonte-size-lg: 1.8rem;
+    }
+
+    header {
+        padding: var(--espacamento-sm) var(--espacamento-md);
+    }
+
+    header img {
+        left: var(--espacamento-md);
+        height: 60px;
+    }
+
+    nav {
+        right: var(--espacamento-md);
+    }
+
+    nav ul {
+        gap: var(--espacamento-sm);
+    }
+
+    main {
+        max-width: 95%;
+    }
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 3
+   ------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+
+    /* Esconde o Logo para economizar espaço no Header */
+    header img {
+        display: none;
+    }
+
+    /* MOSTRAR O HAMBÚRGUER */
+    .menu-hamburguer {
+        display: flex;
+        /* Agora visível no mobile */
+    }
+
+    /* AJUSTE DO MENU */
+    nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: var(--cor-neutra-fundo-escuro);
+        padding-top: var(--espacamento-xl);
+        z-index: 999;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    nav.aberto {
+        transform: translateX(0);
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: var(--espacamento-lg);
+    }
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 4: Mobile Pequeno (max-width: 576px)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 576px) {
+
+    /* Reduz o tamanho do título principal */
+    header h1 {
+        font-size: var(--fonte-size-lg);
+    }
+
+    main {
+        padding: var(--espacamento-sm);
+        margin: var(--espacamento-md) auto;
+    }
+}
+
+/* -------------------------------------------------------------
+   BREAKPOINT 5: Mobile Extra Pequeno (max-width: 400px)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 400px) {
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    main {
+        padding: var(--espacamento-xs);
+    }
+
+    button,
+    a.btn {
+        font-size: 0.85rem;
+        padding: var(--espacamento-xs) var(--espacamento-sm);
+    }
+}

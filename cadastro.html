@@ -5,29 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Raiz Viva</title>
+    <link rel="stylesheet" href="css/stylecadastro.css">
 </head>
 
 <body>
-
     <header>
         <!-- Logo da organização -->
-        <img src="imagens/logoraizviva.jpg" alt="Logo da Raiz Viva" width="120">
+        <img src="imagens/logoraizviva.jpg" alt="Logo Raiz Viva" class="logo">
         <h1>Cadastro - Raiz Viva </h1>
 
-        <nav>
+        <button class="menu-hamburguer" aria-label="Menu" aria-expanded="false">
+            <span class="linha"></span>
+            <span class="linha"></span>
+            <span class="linha"></span>
+        </button>
+
+        <nav id="menu-principal">
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="projetos.html">Projetos</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="cadastro.html" class="ativo">Cadastro</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h2>Sua ajuda faz a diferença. Vamos cultivar um futuro melhor juntos?</h2>
+    <main id="app">
         <figure>
-            <img src="imagens/mulhercomcestoverduras.jpg" alt="Mulher segurando um cesto de verduras" width="350">
+            <img src="imagens/mulhercomcestoverduras.jpg" alt="Mulher segurando um cesto de verduras">
         </figure>
+
+        <p>Sua ajuda faz a diferença. Vamos cultivar um futuro melhor juntos?</p>
 
         <form action="#" method="post">
             <fieldset>
@@ -82,21 +89,24 @@
                     <option value="parceiro">Parceiro</option>
                 </select><br><br>
 
-                <label>Deseja receber novidades por e-mail?</label><br>
-                <input type="radio" id="sim" name="novidades" value="sim">
-                <label for="sim">Sim</label><br>
-                <input type="radio" id="nao" name="novidades" value="nao">
-                <label for="nao">Não</label><br><br>
+                <div class="campo-checkbox">
+                    <input type="checkbox" id="email-optin" name="email-optin" value="sim">
+                    <label for="email-optin">Deseja receber informações da Raiz Viva por e-mail?</label>
+                </div>
             </fieldset>
 
             <button type="submit">Enviar cadastro</button>
         </form>
+
+        <!-- TOAST / ALERTA DE FEEDBACK -->
+        <div id="toast"></div>
     </main>
 
     <footer>
         <p>&copy; 2025 Raiz Viva - Todos os direitos reservados.</p>
     </footer>
 
+    <script src="js/form.js"></script>
 </body>
 
 </html>

@@ -5,51 +5,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projetos — Raiz Viva</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
-        <!-- Logo -->
-        <img src="imagens/logoraizviva.jpg" alt="Logo da Raiz Viva" width="120">
+        <!-- Logo da organização -->
+        <img src="imagens/logoraizviva.jpg" alt="Logo Raiz Viva" class="logo">
+        <h1>Projetos - Raiz Viva </h1>
 
-        <nav>
+        <button class="menu-hamburguer" aria-label="Menu" aria-expanded="false">
+            <span class="linha"></span>
+            <span class="linha"></span>
+            <span class="linha"></span>
+        </button>
+
+        <nav id="menu-principal">
             <ul>
                 <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="projetos.html" class="ativo">Projetos</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h1>Projetos</h1>
-        <p>Conheça as iniciativas da Raiz Viva e descubra como participar.</p>
 
-        <section>
-            <h2>Horta Comunitária</h2>
-            <img src="imagens/hortaemprédio.jpg" alt="Horta Comunitária - Projeto Raiz Viva" width="300">
-            <p>Espaço colaborativo onde moradores aprendem e praticam o cultivo sustentável de alimentos.</p>
-            <p><a href="cadastro.html">Quero me inscrever</a></p>
+    <main id="app">
+        <h2>Conheça as iniciativas da Raiz Viva e descubra como participar!</h2><br>
+
+        <p class="intro">
+            A Raiz Viva acredita que pequenas ações locais podem gerar grandes transformações.
+            Nossos projetos unem sustentabilidade, educação ambiental e inclusão social,
+            promovendo o cuidado com a terra e com as pessoas.
+        </p><br>
+
+        <div class="linha-projetos">
+            <!-- SEÇÃO 1 -->
+            <section class="projeto">
+                <h3>🌱 Horta Comunitária</h3><br>
+                <img src="imagens/hortaemprédio.jpg" alt="Horta Comunitária - Projeto Raiz Viva">
+                <p>
+                    O projeto “Horta Comunitária” oferece oficinas gratuitas sobre cultivo sustentável de
+                    alimentos.
+                    O objetivo é incentivar o consumo consciente e a alimentação saudável dentro das comunidades
+                    urbanas.
+                    As hortas são cuidadas de forma colaborativa, fortalecendo o vínculo entre os moradores.
+                    Além disso, proporciona a experiência de cultivar e restabelecer a
+                    conexão com a natrureza.
+                </p>
+                <p><a href="cadastro.html" class="botao-link">Quero participar</a></p>
+            </section>
+
+            <!-- SEÇÃO 2 -->
+            <section class="projeto">
+                <h3>🍃 Compostagem Coletiva</h3><br><br>
+                <img src="imagens/compostagem1.jpg" alt="Compostagem Comunitária - Raiz Viva">
+                <p>
+                    Esse projeto ensina moradores e escolas a reduzir o lixo e reaproveitar recursos,
+                    transformando restos de alimentos em fertilizante para as hortas locais.
+                    Transformamos resíduos orgânicos em adubo natural!
+                    Ao invés de descartar restos de alimentos, cascas e podas como lixo, nós transformamos os resíduos
+                    orgânicos
+                    em um recurso valioso para nutrir a própria comunidade.
+                </p>
+                <p><a href="cadastro.html" class="botao-link">Saiba mais</a></p>
+            </section>
+        </div>
+
+        <div class="linha-projetos">
+            <!-- SEÇÃO 3 -->
+            <section class="projeto">
+                <h3>🌾 Educação Verde</h3><br>
+                <img src="imagens/meninahorta.jpg" alt="Educação Ambiental - Projeto Raiz Viva">
+                <span class="badge">(Novo)</span>
+                <p>
+                    Oficinas, palestras e visitas guiadas para escolas e grupos comunitários sobre
+                    preservação ambiental e reciclagem.
+                    O programa estimula o aprendizado prático e o respeito à natureza desde cedo.
+                </p>
+                <p><a href="cadastro.html" class="botao-link">Inscrever escola ou grupo</a></p>
+            </section>
+
+            <!-- SEÇÃO 4 -->
+            <section class="projeto">
+                <h3>🪴 Técnicas de Cultivo</h3><br>
+                <img src="imagens/batatas2.jpg" alt="Técnicas de Cultivo em Espaços Pequenos - Raiz Viva">
+                <br>
+                <p>
+                    Descubra como transformar varandas, sacadas e pequenos quintais em mini-hortas produtivas. Este
+                    projeto
+                    oferece
+                    guias práticos e workshops sobre plantio vertical, cultivo em vasos e manejo eficiente de recursos
+                    hídricos
+                    para
+                    ambientes urbanos e compactos.
+                </p>
+
+                <div class="submenu-card-container">
+                    <button class="menu-opener" id="toggle-cultivo" aria-expanded="false" aria-controls="menu-cultivo">
+                        Ver Opções ▼
+                    </button>
+
+                    <ul class="card-submenu" id="menu-cultivo">
+                        <li><span class="submenu-option">Aulas Online</span></li>
+                        <li><span class="submenu-option">Aulas Presenciais</span></li>
+                        <li><span class="submenu-option">Guia Prático (Download)</span></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <section class="secao-galeria">
+            <h2>Nossa Galeria de Imagens</h2>
+            <div class="galeria">
+                <figure class="item-galeria">
+                    <img src="imagens/cultivohortaliças.jpg" alt="Horta em ação">
+                    <figcaption>Horta em ação</figcaption>
+                </figure>
+
+                <figure class="item-galeria">
+                    <img src="imagens/maosnaterra.jpg" alt="Mãos na terra">
+                    <figcaption>Mãos na terra</figcaption>
+                </figure>
+
+                <figure class="item-galeria">
+                    <img src="imagens/cultivotomates.jpg" alt="Cultivo urbano">
+                    <figcaption>Cultivo Urbano</figcaption>
+                </figure>
+
+                <figure class="item-galeria">
+                    <img src="imagens/voluntario.jpg" alt="Voluntário">
+                    <figcaption>Voluntário</figcaption>
+                </figure>
+
+                <figure class="item-galeria">
+                    <img src="imagens/vegetaisfrescos.jpg" alt="Vegetais frescos">
+                    <figcaption>Resultados da colheita</figcaption>
+                </figure>
+
+                <figure class="item-galeria">
+                    <img src="imagens/colheita.jpg" alt="Colheita sustentável">
+                    <figcaption>Colheita sustentável</figcaption>
+                </figure>
+
+            </div>
         </section>
 
-        <section>
-            <h2>Como Doar</h2>
-            <p>Você pode contribuir com doações de alimentos ou recursos financeiros.</p>
-        </section>
+        <div class="secoes-finais">
+            <section class="projeto como-doar-section">
+                <h2>💚 Como Doar</h2>
+                <p>
+                    Sua contribuição ajuda a manter nossos projetos ativos e acessíveis para toda a comunidade.
+                    Você pode doar mudas, sementes, ferramentas ou recursos financeiros.
+                    Toda doação é revertida em ações diretas para o meio ambiente.
+                </p>
 
-        <section>
-            <h2>Entre em Contato</h2>
-            <address>
-                <p>Email: <a href="mailto:contato@raizviva.org.br">contato@raizviva.org.br</a></p>
-                <p>Telefone: (11) 99321-1234</p>
-                <p>Endereço: Rua das Palmeiras, 123 - Bairro Verde, Cidade Esperança</p>
-            </address>
-        </section>
+                <p><a href="cadastro.html" class="botao-link">Fazer uma doação</a></p>
+            </section>
+
+            <section class="projeto contato-section">
+                <h2>Fale Conosco</h2>
+                <address class="contato-info">
+                    <p>Endereço: Rua das Palmeiras, 123</p>
+                    <p>Bairro Verde, Cidade Esperança</p><br />
+                    <p>Email: <a href="mailto:contato@raizviva.org">contato@raizviva.org</a></p><br />
+                    <p>Telefone: (11) 98765-4321</p>
+                </address>
+            </section>
+
+        </div>
+
     </main>
 
     <footer>
         <p>&copy; 2025 Raiz Viva - Todos os direitos reservados.</p>
     </footer>
+
+    <script src="js/script.js"></script>
 
 </body>
 
