@@ -565,6 +565,16 @@ footer {
     text-shadow: none;
 }
 
+/* --- Lógica de Boas-Vindas --- */
+.aviso-boas-vindas {
+    background-color: var(--cor-primaria);
+    border: 1px solid var(--cor-neutra-texto-escuro);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+}
+
 /* -------------------------------------------------------------
    BREAKPOINT 1: Desktop Pequeno/Tablet Paisagem (max-width: 1200px)
    ------------------------------------------------------------- */
@@ -663,7 +673,6 @@ footer {
    ------------------------------------------------------------- */
 @media screen and (max-width: 576px) {
 
-    /* Reduz o tamanho do título principal */
     header h1 {
         font-size: var(--fonte-size-lg);
     }
@@ -683,7 +692,7 @@ footer {
    ------------------------------------------------------------- */
 @media screen and (max-width: 400px) {
 
-    /* Diminui ainda mais o título e espaçamentos */
+
     header h1 {
         font-size: 1.4rem;
     }
