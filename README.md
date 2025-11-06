@@ -13,7 +13,7 @@ HTML5 (Estrutura Semântica) • CSS3 (Flexbox, Media Queries) • JavaScript (D
 
 ✨ Especificações 
 Fundamentos e Estrutura 
-Estrutura Semântica: Implementação de index.html, projetos.html, e cadastro.html com uso de tags como <header>, <nav>, <main>, <section>, <article>, <figure> e <footer>.
+Estrutura Semântica: Implementação de index.html, projetos.html, e cadastro.html com uso de tags.
 Formulários: Formulário de cadastro utilizando tipos de input HTML5 específicos (e-mail, date, tel).
 Validação Nativa: Uso de atributos required, pattern e title para validação nativa de CPF, telefone e CEP.
 Qualidade: Todos os arquivos HTML foram validados com sucesso pelo W3C Validator.
