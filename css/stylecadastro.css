@@ -531,3 +531,79 @@ select:valid:not(:focus) {
         padding: var(--espacamento-xs) var(--espacamento-sm);
     }
 }
+
+/* 🌞 TEMA CLARO */
+body.light-mode {
+    color: var(--cor-neutra-texto-escuro);
+    text-shadow: none;
+}
+
+/* 1. Blocos Principais (Header, Main, Footer) */
+body.light-mode header,
+body.light-mode footer {
+    background-color: var(--cor-primaria-escura);
+    color: var(--cor-neutra-texto-claro);
+}
+
+/* 2. Conteúdo Principal e Formulário */
+body.light-mode header {
+    background-color: var(--cor-neutra-fundo-claro);
+    color: var(--cor-neutra-texto-escuro);
+}
+
+body.light-mode main p {
+    color: var(--cor-neutra-texto-escuro);
+}
+
+body.light-mode main,
+body.light-mode form {
+    background-color: var(--cor-neutra-fundo-claro);
+    color: var(--cor-neutra-texto-escuro);
+}
+
+/* 3. Títulos (h1, h2) e Legendas */
+body.light-mode h1 {
+    color: var(--cor-primaria-escura);
+}
+
+body.light-mode legend {
+    color: var(--cor-primaria-escura);
+}
+
+body.light-mode h2 {
+    color: var(--cor-primaria-escura);
+    border-left-color: var(--cor-primaria-escura);
+}
+
+/* 4. Links */
+body.light-mode a {
+    color: var(--cor-primaria);
+}
+
+body.light-mode a:hover {
+    color: var(--cor-primaria-escura);
+}
+
+/* 5. Labels e Checkbox */
+body.light-mode .campo-checkbox label {
+    color: var(--cor-neutra-texto-escuro);
+}
+
+/* 6. Botões (O Botão de Envio do Formulário) */
+body.light-mode button {
+    background-color: var(--cor-primaria-escura);
+    color: var(--cor-neutra-texto-claro);
+}
+
+body.light-mode button:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-neutra-texto-escuro);
+}
+
+/* Campos de Entrada (input, select) - Mantendo a aparência clara */
+body.light-mode input,
+body.light-mode select {
+    background-color: #fff;
+    color: var(--cor-neutra-texto-escuro);
+    border-color: var(--cor-primaria);
+}

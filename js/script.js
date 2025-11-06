@@ -1,12 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const main = document.querySelector("main");
     const telaOriginalMain = main ? main.innerHTML : '';
 
+    function toggleTema() {
+        const body = document.body;
 
+        if (body.classList.contains('light-mode')) {
+            body.classList.remove('light-mode');
+            localStorage.setItem('raizVivaTema', 'escuro');
+            return;
+        }
+
+        body.classList.add('light-mode');
+        localStorage.setItem('raizVivaTema', 'claro');
+    }
+
+    function aplicarTemaSalvo() {
+        const temaSalvo = localStorage.getItem('raizVivaTema');
+        const switchTema = document.getElementById('light-mode-switch');
+
+        if (temaSalvo === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        if (temaSalvo === 'light') {
+            document.body.classList.add('light-mode');
+            if (switchTema) switchTema.checked = true;
+        }
+
+        if (switchTema) {
+            switchTema.addEventListener('change', toggleTema);
+        }
+    }
+
+    // --- Funções de Mensagem de Boas-Vindas  ---
     function handleWelcomeMessage() {
         const welcomeContainer = document.getElementById('welcome-message-container');
-
 
         if (!welcomeContainer) {
             return;
@@ -24,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
             welcomeContainer.innerHTML = mensagemHTML;
 
-
             document.getElementById('fechar-aviso').addEventListener('click', () => {
                 welcomeContainer.style.display = 'none';
                 localStorage.setItem('raizVivaPrimeiraVisita', 'true');
@@ -34,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function anexarTodosOsEventos() {
 
-        // --- 1 Efeito de Clique em Botões (.botao-link) ---
         const botoes = document.querySelectorAll('.botao-link');
         botoes.forEach(botao => {
             botao.removeEventListener('click', handleBotaoClick);
@@ -64,12 +91,13 @@ document.addEventListener("DOMContentLoaded", function () {
             menuToggle.setAttribute('aria-expanded', isExpanded);
         }
 
+        // ====================================================================
+        // --- SUBMENUS E SPA DOS CARDS  ---
+        // ====================================================================
         const cards = document.querySelectorAll('.projeto');
 
-        // VERIFICA SE ESTÁ NA PÁGINA DE PROJETOS
         if (cards.length > 0) {
 
-            // --- Submenus dos Cards  ---
             const toggles = document.querySelectorAll('.menu-opener');
             toggles.forEach(toggle => {
                 toggle.removeEventListener('click', handleMenuToggle);
@@ -94,17 +122,20 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     });
 
+
                     submenu.classList.toggle('aberto');
                     const isExpanded = submenu.classList.contains('aberto');
                     event.currentTarget.setAttribute('aria-expanded', isExpanded);
                 }
             }
 
+
             // --- SPA e Templates com JavaScript (Clique nos Cards) ---
             cards.forEach(card => {
                 card.removeEventListener('click', handleCardClick);
                 card.addEventListener('click', handleCardClick);
             });
+
 
             function gerarTemplate(projetoTitulo) {
                 return `
@@ -116,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </section>
                 `;
             }
+
 
             function handleCardClick(e) {
                 if (e.target.tagName.toLowerCase() === "a" || e.target.closest('.menu-opener')) return;
@@ -130,22 +162,36 @@ document.addEventListener("DOMContentLoaded", function () {
                     anexarTodosOsEventos();
                 });
             }
-        } // FIM DA VERIFICAÇÃO 
+        } // FIM DA VERIFICAÇÃO
+
 
         // Chamada da função de Mensagem de Boas-Vindas
         handleWelcomeMessage();
 
+
     } // FIM da função anexarTodosOsEventos()
 
 
-    // ANEXA TODOS OS EVENTOS NA PRIMEIRA CARGA DA PÁGINA (inclui Menu Hambúrguer e a lógica SPA)
+    // =========================================================
+    // INICIALIZAÇÃO E LISTENERS GLOBAIS
+    // =========================================================
+
+
+    //  Aplica o Tema Escuro na carga
+    aplicarTemaSalvo();
+
+
+    //  ANEXA TODOS OS EVENTOS NA PRIMEIRA CARGA DA PÁGINA (inclui Menu Hambúrguer e a lógica SPA)
     anexarTodosOsEventos();
 
+
+    //  Listener Global para fechar o submenu ao clicar fora
     document.addEventListener('click', function (event) {
         const toggles = document.querySelectorAll('.menu-opener');
         toggles.forEach(toggle => {
             const menuId = toggle.getAttribute('aria-controls');
             const submenu = document.getElementById(menuId);
+
 
             if (submenu && submenu.classList.contains('aberto') && !toggle.contains(event.target) && !submenu.contains(event.target)) {
                 submenu.classList.remove('aberto');
@@ -154,4 +200,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-}); 
+
+}); // FIM do DOMContentLoaded
+
+
+
+
+

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // === Variáveis Globais (Seletor do formulário, campos, etc.) ===
     const app = document.querySelector("main");
     const form = document.querySelector("form");
     const camposObrigatorios = document.querySelectorAll("input[required], select[required]"); // Incluindo 'select'
@@ -7,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Variáveis de Menu
     const menuToggle = document.querySelector('.menu-hamburguer');
     const navMenu = document.getElementById('menu-principal');
+
+    // Variável para armazenar o conteúdo original do main/app
     const telaOriginalApp = app ? app.innerHTML : '';
 
     // =========================================================
@@ -22,9 +25,46 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // =========================================================
+    //  LÓGICA DE TEMA (Modo Claro/Escuro)
+    // =========================================================
+
+    function toggleTema() {
+        const body = document.body;
+
+
+        if (body.classList.contains('light-mode')) {
+            body.classList.remove('light-mode');
+            localStorage.setItem('raizVivaTema', 'escuro');
+        } else {
+            body.classList.add('light-mode');
+            localStorage.setItem('raizVivaTema', 'claro');
+        }
+    }
+
+    function aplicarTemaSalvo() {
+        const temaSalvo = localStorage.getItem('raizVivaTema');
+        const switchTema = document.getElementById('light-mode-switch');
+
+
+        if (temaSalvo === 'claro') {
+            document.body.classList.add('light-mode');
+            if (switchTema) switchTema.checked = true; // Marca o switch se o tema salvo for claro
+        }
+
+        if (switchTema) {
+            // Anexa o evento de clique no switch para mudar o tema
+            switchTema.addEventListener('change', toggleTema);
+        }
+    }
+
+    // =========================================================
+    //  LÓGICA DE VALIDAÇÃO DE FORMULÁRIO 
+    // =========================================================
+
     // ---- TEMPLATES SPA ---- //
     const telaSucesso = `
-        <section class="sucesso">
+        <section class="sucesso" role="alert" aria-live="assertive">
             <h2>🎉 Cadastro realizado com sucesso!</h2>
             <p>Obrigado por fazer parte do projeto Raiz Viva 💚</p>
             <button id="voltar" class="botao-link">Voltar ao cadastro</button>
@@ -59,18 +99,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (!valido) {
-
+                // Foca no primeiro campo inválido para melhorar a usabilidade
                 if (primeiroInvalido) primeiroInvalido.focus();
                 return;
             }
+
 
             app.innerHTML = telaSucesso;
 
             document.getElementById("voltar").addEventListener("click", () => {
 
                 app.innerHTML = telaOriginalApp;
+                aplicarTemaSalvo();
 
-                location.reload();
             });
         });
 
@@ -86,4 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    // =========================================================
+    //  INICIALIZAÇÃO
+    // =========================================================
+
+    //  Aplica o Tema Salvo ao carregar a página
+    aplicarTemaSalvo();
+
 });

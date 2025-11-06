@@ -39,6 +39,19 @@
     --cor-alerta-borda-sucesso: #4CAF50;
     --cor-alerta: #ff4d4d;
 
+    /* Cores Neutras (Tema Escuro - Base) */
+    --cor-neutra-fundo-escuro: rgba(60, 40, 20, 0.80);
+    /* Marrom Escuro (Fundo Main) */
+    --cor-neutra-texto: #e9fbe2;
+    /* Verde Claríssimo (Texto Principal Escuro) */
+
+    /* Cores Neutras (Tema Claro - Base) */
+    --cor-neutra-fundo-claro: #f5f0e8;
+    /* Bege/Off-white (Fundo Claro) */
+    --cor-neutra-texto-escuro: #3a2a16;
+    /* Marrom Escuro (Texto em Fundo Claro) */
+    --cor-neutra-texto-claro: #fff;
+
     /* TIPOGRAFIA */
     --fonte-size-xs: 0.9rem;
     --fonte-size-sm: 1.2rem;
@@ -575,12 +588,94 @@ footer {
     text-align: center;
 }
 
+/* --- Lógica de Tema Claro (Inicial) --- */
+.tema-toggle {
+    position: absolute;
+    top: 20px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+/* 🌞 TEMA CLARO  */
+body.light-mode {
+    color: var(--cor-neutra-texto-escuro);
+    text-shadow: none;
+}
+
+body.light-mode header,
+body.light-mode main,
+body.light-mode footer,
+body.light-mode section {
+    background-color: var(--cor-neutra-fundo-claro);
+    color: var(--cor-neutra-texto-escuro);
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+    color: var(--cor-primaria-escura);
+}
+
+/* Links no claro */
+body.light-mode a {
+    color: var(--cor-primaria-escura);
+}
+
+/* Botões no claro */
+body.light-mode button {
+    background-color: var(--cor-primaria);
+    color: #fff;
+}
+
+body.light-mode button:hover {
+    background-color: var(--cor-primaria-escura);
+}
+
+/* Switch no tema claro */
+body.light-mode .switch-label {
+    background-color: var(--componente-switch-fundo-claro);
+    border-color: var(--componente-switch-borda-clara);
+    border-style: solid;
+    border-width: 1px;
+}
+
+/* --- Texto escuro nos Cards (Projetos/Galeria) no Modo Claro --- */
+body.light-mode .projeto,
+body.light-mode .projeto p,
+body.light-mode .item-galeria,
+body.light-mode .item-galeria figcaption {
+    background-color: var(--cor-neutra-fundo-claro);
+    color: var(--cor-neutra-texto-escuro);
+    text-shadow: none;
+}
+
+/* --- Estilo do Botão no Tema CLARO --- */
+body.light-mode .botao-link {
+    background-color: var(--cor-primaria);
+    color: var(--cor-neutra-fundo-claro);
+    text-shadow: none;
+}
+
+body.light-mode .botao-link:hover {
+    color: var(--cor-neutra-texto-escuro);
+}
+
+/* --- Estilos do Aviso de Boas-Vindas no TEMA CLARO --- */
+body.light-mode .aviso-boas-vindas {
+    color: var(--cor-neutra-texto-escuro);
+}
+
+body.light-mode .aviso-boas-vindas h3 {
+    color: var(--cor-neutra-texto-escuro);
+}
+
+
 /* -------------------------------------------------------------
    BREAKPOINT 1: Desktop Pequeno/Tablet Paisagem (max-width: 1200px)
    ------------------------------------------------------------- */
 @media screen and (max-width: 1200px) {
 
-    /* Ajusta o padding principal para telas ligeiramente menores */
     main {
         max-width: 90%;
     }
@@ -622,12 +717,10 @@ footer {
    ------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
 
-    /* Esconde o Logo para economizar espaço no Header */
     header img {
         display: none;
     }
 
-    /* MOSTRAR O HAMBÚRGUER */
     .menu-hamburguer {
         display: flex;
     }
@@ -691,7 +784,6 @@ footer {
    BREAKPOINT 5: Mobile Extra Pequeno (max-width: 400px)
    ------------------------------------------------------------- */
 @media screen and (max-width: 400px) {
-
 
     header h1 {
         font-size: 1.4rem;
